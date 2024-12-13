@@ -103,7 +103,7 @@ Modify `package.json` to add custom build scripts or configuration for Electron 
 Application icon after building the executable.
 
 ### Main Interface and Client Management
-![Main Interface](screenshots/Add-Client.png.png)
+![Main Interface](screenshots/Add-Client.png)
 The main dashboard combines queue overview and client management functionalities. It provides a comprehensive view of the current salon queue, displaying active customers, waiting times, and service statuses, while also offering an intuitive interface for adding new clients and managing their service information.
 
 ### Queue View Screen
