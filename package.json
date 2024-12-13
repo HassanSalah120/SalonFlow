@@ -3,7 +3,7 @@
   "name": "salonflow",
   "version": "1.0.0",
   "description": "Salon Queue Management System",
-  "main": "main.js",
+  "main": "./main.js",
   "scripts": {
     "start": "electron .",
     "pack": "electron-builder --dir",
@@ -24,26 +24,33 @@
   "build": {
     "appId": "com.salonflow.app",
     "productName": "SalonFlow",
-    "files": [
-      "assets/**/*",
-      "css/**/*",
-      "main.js",
-      "queue_display.html",
-      "queue_management.html"
-    ],
     "win": {
-      "target": [
-        "nsis"
-      ],
-      "icon": "favico/android-chrome-512x512.ico"
+      "target": ["nsis"],
+      "publisherName": "SalonFlow",
+      "verifyUpdateCodeSignature": false,
+      "icon": "favico/android-chrome-512x512.ico",
+      "certificateFile": null,
+      "certificatePassword": null
     },
-    "nsis": {
-      "oneClick": false,
-      "allowElevation": true,
-      "allowToChangeInstallationDirectory": true,
-      "createDesktopShortcut": true,
-      "createStartMenuShortcut": true,
-      "shortcutName": "SalonFlow"
-    }
+    "mac": {
+      "target": ["dmg"]
+    },
+    "linux": {
+      "target": ["AppImage"]
+    },
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "**/*",
+      "!**/*.ts",
+      "!*.code-workspace"
+    ],
+    "extraResources": [],
+    "extraFiles": [],
+    "asar": true,
+    "compression": "maximum",
+    "detectUpdateChannel": false,
+    "publish": null
   }
 }
