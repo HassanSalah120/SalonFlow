@@ -1,0 +1,49 @@
+{
+  "type": "module",
+  "name": "salonflow",
+  "version": "1.0.0",
+  "description": "Salon Queue Management System",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
+    "test": "mocha test/main.test.js",
+    "test-integration": "mocha test/integration.test.js"
+  },
+  "keywords": ["salon", "queue", "management", "electron"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^5.1.1",
+    "electron": "^31.3.1",
+    "electron-builder": "^24.13.3",
+    "mocha": "^10.7.3",
+    "spectron": "^19.0.0"
+  },
+  "build": {
+    "appId": "com.salonflow.app",
+    "productName": "SalonFlow",
+    "files": [
+      "assets/**/*",
+      "css/**/*",
+      "main.js",
+      "queue_display.html",
+      "queue_management.html"
+    ],
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "icon": "favico/android-chrome-512x512.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "SalonFlow"
+    }
+  }
+}

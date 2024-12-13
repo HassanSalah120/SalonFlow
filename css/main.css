@@ -1,0 +1,291 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
+    font-family: 'Inter', sans-serif;
+    color: #333;
+    background-image: url('../assets/bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+.card {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 900px;
+    border: 1px solid #dee2e6;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    transition: box-shadow 0.3s, border-color 0.3s;
+}
+
+.card:hover {
+    box-shadow: 0 0 15px #d5b981, 0 0 30px #d5b981, 0 0 45px #d5b981;
+    border-color: #d5b981;
+}
+
+.card-title {
+    font-size: 2.8rem;
+    font-weight: 700;
+    font-family: 'Bilbo Swash Caps', cursive;
+    color: #4a3c1e;
+    margin-bottom: 2rem;
+    transition: color 0.3s;
+}
+
+.card:hover .card-title {
+    color: #d5b981;
+}
+
+#currentQueue,
+#nextQueue {
+    font-size: 1.8rem;
+    color: #212529;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
+#printSection {
+    display: none;
+    background-image: none !important;
+}
+
+#currentCustomerInfo {
+    font-size: 1.5rem !important;
+}
+
+.current-customer {
+    background-color: #d1e7dd;
+    color: #0f5132;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.next-customer {
+    background-color: #fff3cd;
+    color: #664d03;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.btn {
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 0.25rem;
+    padding: 0.75rem 1.5rem;
+    transition: all 0.3s ease;
+}
+
+#addCustomerBtn {
+    background-color: #37a63b;
+    color: #ffffff;
+    border: none;
+}
+
+#addCustomerBtn:hover {
+    background-color: #2e8b57;
+}
+
+#nextCustomerBtn {
+    background-color: #6fbcff;
+    color: #ffffff;
+    border: none;
+}
+
+#nextCustomerBtn:hover {
+    background-color: #058aff;
+}
+
+#printBtn {
+    background-color: #ff6030;
+    color: #ffffff;
+    border: none;
+}
+
+#printBtn:hover {
+    background-color: #ff3c00;
+}
+
+#displayBtn {
+    background-color: #7e0439c4;
+    color: #ffffff;
+    border: none;
+}
+
+#displayBtn:hover {
+    background-color: #c90057;
+}
+
+.w-75 {
+    width: 75% !important;
+}
+
+.w-100 {
+    width: 100% !important;
+}
+
+.service-selection {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.service-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: #333;
+    transition: color 0.3s ease;
+    flex-basis: calc(25% - 20px);
+    text-align: center;
+}
+
+.service-option input[type="radio"] {
+    display: none;
+}
+
+.service-option i {
+    font-size: 2.5rem;
+    margin-bottom: 5px;
+    color: #1f1f1f;
+    transition: color 0.3s ease;
+}
+
+.service-option span {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #212529;
+}
+
+.service-option input[type="radio"]:checked+i {
+    color: #ffd700;
+}
+
+.service-option input[type="radio"]:checked+span {
+    color: #28a745;
+}
+
+.service-option:hover i {
+    color: #0056b3;
+}
+
+.service-option:hover span {
+    color: #0056b3;
+}
+
+.form-label {
+    font-size: 1.65rem;
+    font-weight: bold;
+    color: #000000;
+    /* text-shadow: 0 0 8px #000000,
+        0 0 15px #f76c6c,
+        0 0 25px #f8b6b6,
+        0 0 35px #000000; */
+    letter-spacing: 0.05em;
+    transition: color 0.3s, text-shadow 0.3s;
+}
+
+.card:hover .form-label {
+    color: #d5b981;
+    text-shadow: 0 0 8px #d5b981,
+        0 0 15px rgba(237, 247, 103, 0.505),
+        0 0 25px rgba(237, 247, 103, 0.505),
+        0 0 35px rgba(237, 247, 103, 0.505);
+}
+
+/* Adjust button sizes */
+.btn-sm {
+    font-size: 0.875rem;
+    /* Smaller font size */
+    padding: 0.5rem 1rem;
+    /* Smaller padding */
+}
+
+/* Print styles */
+@media print {
+    body {
+        background: none !important;
+        margin: 0;
+        padding: 0;
+        display: block;
+        justify-content: center;
+        align-items: center;
+        padding-top: 30%;
+        height: 100vh;
+        font-size: 36pt;
+        /* Adjust font size as needed */
+        text-align: center;
+        /* Center text horizontally */
+    }
+
+    .print-content {
+        display: block;
+        max-width: 100%;
+        margin: 0 auto;
+        page-break-after: avoid;
+        page-break-inside: avoid;
+    }
+
+    @page {
+        size: A4;
+        margin: 10mm;
+    }
+}
+
+.btn-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    height: 100%;
+}
+
+.btn-icon i {
+    margin-right: 8px;
+}
+
+.col-md-6 .btn {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@font-face {
+    font-family: 'Bilbo Swash Caps';
+    src: url('fonts/BilboSwashCaps-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@media print {
+    body {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+}

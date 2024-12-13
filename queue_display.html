@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Queue Display | SalonFlow</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/main.css" rel=" stylesheet">
+    <link href="css/fa/css/fontawesome.css" rel="stylesheet" />
+    <link href="css/fa/css/brands.css" rel="stylesheet" />
+    <link href="css/fa/css/solid.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Bilbo+Swash+Caps&display=swap" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="180x180" href="favico/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favico/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favico/favicon-16x16.png">
+    <link rel="manifest" href="favico/site.webmanifest">
+</head>
+
+<body dir="rtl">
+    <div class="card">
+        <div class="card-body">
+            <h1 class="card-title text-center">SalonFlow</h1>
+
+            <h1 class="card-title text-center">بـالـخـدمة الآن</h1>
+            <div id="currentQueue" class="text-center current-customer">لا يوجد عملاء بالانتظار</div>
+            <div id="nextQueue" class="text-center next-customer">التالي: لا يوجد عملاء بالانتظار</div>
+        </div>
+        <div id="currentCustomer" class="text-center">
+            <div id="currentCustomerInfo" class="mb-3"></div>
+            <button id="displayBtn" class="btn btn-success w-100 mt-2"
+                onclick="window.location.href='queue_management.html';">اضافة عميل </button>
+        </div>
+    </div>
+
+    <script>
+        function updateQueueDisplay() {
+            const queue = JSON.parse(localStorage.getItem('queue')) || [];
+            const currentQueueElement = document.getElementById('currentQueue');
+            const nextQueueElement = document.getElementById('nextQueue');
+
+            if (queue.length > 0) {
+                const currentCustomer = queue[0];
+                currentQueueElement.innerHTML = `العميل رقم: ${currentCustomer.number} <br> الاسم: ${currentCustomer.name} <br> الخدمة: ${currentCustomer.type} <br> الاخصائية: ${currentCustomer.specialist}`;
+
+                nextQueueElement.innerHTML = queue.length > 1
+                    ? `العميل التالي رقم: ${queue[1].number} <br> الاسم: ${queue[1].name} <br> الخدمة: ${queue[1].type}`
+                    : "التالي: لا يوجد عملاء بالانتظار";
+
+            } else {
+                currentQueueElement.textContent = "لا يوجد عملاء بالانتظار";
+                nextQueueElement.textContent = "التالي: لا يوجد عملاء بالانتظار";
+            }
+        }
+        setInterval(updateQueueDisplay, 1000); 
+    </script>
+</body>
+
+</html>

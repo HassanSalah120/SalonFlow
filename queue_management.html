@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SalonFlow</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/fa/css/fontawesome.css" rel="stylesheet" />
+    <link href="css/fa/css/brands.css" rel="stylesheet" />
+    <link href="css/fa/css/solid.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Bilbo+Swash+Caps&display=swap" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="180x180" href="favico/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favico/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favico/favicon-16x16.png">
+    <link rel="manifest" href="favico/site.webmanifest">
+</head>
+
+<body dir="rtl">
+    <div class="card">
+        <div class="card-body">
+            <h1 class="card-title text-center">SalonFlow</h1>
+
+            <div class="form-group mb-3">
+                <label for="customerName" class="form-label">اسم العميل</label>
+                <input type="text" id="customerName" class="form-control" required>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="specialistname" class="form-label">الاخصائية</label>
+                <div class="row mb-2">
+                    <div class="col-md-6">
+                        <select id="specialistname" class="form-control" required>
+                            <option value="" disabled selected>اختر اخصائية</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" id="newSpecialist" class="form-control" placeholder="أضف اخصائية جديدة">
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between mt-2">
+                    <button id="addSpecialistBtn" class="btn btn-success btn-sm">إضافة اخصائية</button>
+                    <button id="removeSpecialistBtn" class="btn btn-danger btn-sm">حذف اخصائية</button>
+                </div>
+            </div>
+
+            <div class="form-group mb-3">
+                <label for="serviceType" class="form-label">نوع الخدمة</label>
+                <div class="service-selection">
+                    <label class="service-option">
+                        <input type="radio" name="serviceType" value="قص الشعر" id="haircut" hidden>
+                        <i class="fas fa-cut" data-value="Haircut"></i>
+                        <span>قص الشعر</span>
+                    </label>
+
+                    <label class="service-option">
+                        <input type="radio" name="serviceType" value="استشوار" id="blowdry" hidden>
+                        <i class="fas fa-wind" data-value="Blowdry"></i>
+                        <span>استشوار</span>
+                    </label>
+
+                    <label class="service-option">
+                        <input type="radio" name="serviceType" value="مكياج" id="makeup" hidden>
+                        <i class="fas fa-paint-brush" data-value="Makeup"></i>
+                        <span>مكياج</span>
+                    </label>
+
+                    <label class="service-option">
+                        <input type="radio" name="serviceType" value="تساريح" id="hairstyling" hidden>
+                        <i class="fas fa-scissors" data-value="Hairstyling"></i>
+                        <span>تساريح</span>
+                    </label>
+
+                    <label class="service-option">
+                        <input type="radio" name="serviceType" value="البشرة" id="skincare" hidden>
+                        <i class="fas fa-leaf" data-value="Skincare"></i>
+                        <span>البشرة</span>
+                    </label>
+
+                    <label class="service-option">
+                        <input type="radio" name="serviceType" value="المساج" id="massage" hidden>
+                        <i class="fas fa-spa" data-value="Massage"></i>
+                        <span>المساج</span>
+                    </label>
+
+                    <label class="service-option">
+                        <input type="radio" name="serviceType" value="معالجات الشعر" id="hairtreatments" hidden>
+                        <i class="fas fa-water" data-value="HairTreatments"></i>
+                        <span>معالجات الشعر</span>
+                    </label>
+
+                    <label class="service-option">
+                        <input type="radio" name="serviceType" value="الحواجب" id="eyebrows" hidden>
+                        <i class="fas fa-pencil-alt" data-value="Eyebrows"></i>
+                        <span>الحواجب</span>
+                    </label>
+
+                    <label class="service-option">
+                        <input type="radio" name="serviceType" value="الواكس والحلاوة" id="waxing" hidden>
+                        <i class="fas fa-sun" data-value="Waxing"></i>
+                        <span>الواكس والحلاوة</span>
+                    </label>
+
+                    <label class="service-option">
+                        <input type="radio" name="serviceType" value="الصبغات" id="haircoloring" hidden>
+                        <i class="fas fa-palette" data-value="HairColoring"></i>
+                        <span>الصبغات</span>
+                    </label>
+
+                    <label class="service-option">
+                        <input type="radio" name="serviceType" value="المنكير والبدكير" id="manicurepedicure" hidden>
+                        <i class="fas fa-hand-sparkles" data-value="ManicurePedicure"></i>
+                        <span>المنكير والبدكير</span>
+                    </label>
+                </div>
+            </div>
+            <div class="col-12">
+                <button id="addCustomerBtn" class="btn btn-primary w-75 mx-auto d-block mb-3">إضافة عميل</button>
+            </div>
+
+            <div id="currentCustomer" class="text-center">
+                <h2>العميل الحالي</h2>
+                <div id="currentCustomerInfo" class="mb-3"></div>
+                
+                <!--- added to solve console errors-->
+                <div id="currentQueue" class="text-center mt-4" hidden></div>
+                <div id="nextQueue" class="text-center mt-2" hidden></div>
+                <!---
+                
+                <div class="container mt-4">
+                    <div class="row text-center">
+                        <!-- First Column: Two stacked buttons
+                        <!-- Second Column: Large button -->
+                        <div class="col-md-6">
+                            <button id="displayBtn" class="btn btn-success w-100" style="height: 100px;"
+                                onclick="window.location.href='queue_display.html';">شاشة العرض</button>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-2">
+                                <button id="nextCustomerBtn" class="btn btn-secondary w-100">العميل القادم</button>
+                            </div>
+                            <div>
+                                <button id="printBtn" class="btn btn-primary w-100">طباعة</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="printSection">
+        <span id="printQueueNumber"></span><br>
+        <span id="printCustomerName"></span><br>
+        <span id="printSpecialistName"></span><br>
+        <span id="printServiceType"></span>
+    </div>
+    <script>
+        let queue = JSON.parse(localStorage.getItem('queue')) || [];
+        let queueNumber = queue.length > 0 ? queue[queue.length - 1].number + 1 : 1;
+
+        // Initialize specialists from local storage
+        let specialists = JSON.parse(localStorage.getItem('specialists')) || ["اخصائية 1", "اخصائية 2", "اخصائية 3"];
+
+        // Function to update the dropdown list with specialists
+        function updateSpecialistDropdown() {
+            const specialistDropdown = document.getElementById('specialistname');
+            specialistDropdown.innerHTML = '<option value="" disabled selected>اختر اخصائية</option>';
+            specialists.forEach(specialist => {
+                const option = document.createElement('option');
+                option.value = specialist;
+                option.textContent = specialist;
+                specialistDropdown.appendChild(option);
+            });
+        }
+
+        // Add new specialist from input field
+        document.getElementById('addSpecialistBtn').addEventListener('click', () => {
+            const newSpecialist = document.getElementById('newSpecialist').value.trim();
+            if (newSpecialist && !specialists.includes(newSpecialist)) {
+                specialists.push(newSpecialist);
+                localStorage.setItem('specialists', JSON.stringify(specialists));
+                updateSpecialistDropdown();
+                document.getElementById('newSpecialist').value = ''; // Clear the input field
+            } else {
+                alert('يرجى إدخال اسم اخصائية جديد.');
+            }
+        });
+
+        // Remove selected specialist
+        document.getElementById('removeSpecialistBtn').addEventListener('click', () => {
+            const selectedSpecialist = document.getElementById('specialistname').value;
+            if (selectedSpecialist) {
+                specialists = specialists.filter(specialist => specialist !== selectedSpecialist);
+                localStorage.setItem('specialists', JSON.stringify(specialists));
+                updateSpecialistDropdown();
+            } else {
+                alert('يرجى اختيار اخصائية لحذفها.');
+            }
+        });
+
+        // Save queue to local storage
+        function saveQueueToLocalStorage() {
+            localStorage.setItem('queue', JSON.stringify(queue));
+        }
+
+        // Update current customer display
+        function updateCurrentCustomer() {
+            const currentCustomerInfo = document.getElementById('currentCustomerInfo');
+            if (queue.length > 0) {
+                currentCustomerInfo.innerHTML = `رقم الدور: ${queue[0].number} <br> الاسم: ${queue[0].name} <br> الخدمة: ${queue[0].type} <br> الاخصائية: ${queue[0].specialist}`;
+            } else {
+                currentCustomerInfo.textContent = 'لا يوجد عملاء في الانتظار';
+            }
+        }
+
+        // Print current queue
+        function printCurrentQueue() {
+            const printContents = document.getElementById('printSection').innerHTML;
+            const originalContents = document.body.innerHTML;
+            document.body.innerHTML = printContents;
+            window.print();
+            document.body.innerHTML = originalContents;
+            location.reload();
+        }
+
+        // Handle add customer
+        document.getElementById('addCustomerBtn').addEventListener('click', () => {
+            const name = document.getElementById('customerName').value;
+            const specialist = document.getElementById('specialistname').value;
+            const selectedService = document.querySelector('input[name="serviceType"]:checked');
+
+            if (name && selectedService) {
+                const customer = {
+                    name: name,
+                    specialist: specialist,
+                    type: selectedService.value,
+                    number: queueNumber++
+                };
+
+                queue.push(customer);
+                saveQueueToLocalStorage();
+                updateCurrentCustomer();
+                document.getElementById('customerName').value = '';
+                document.getElementById('specialistname').value = '';
+
+                // Clear selected service
+                document.querySelectorAll('input[name="serviceType"]').forEach(rb => rb.checked = false);
+                document.querySelectorAll('.service-option').forEach(option => option.classList.remove('selected'));
+            } else {
+                alert('يرجى إدخال اسم واختيار خدمة.');
+            }
+        });
+
+        // Handle move to next customer
+        document.getElementById('nextCustomerBtn').addEventListener('click', () => {
+            if (queue.length > 0) {
+                queue.shift();
+                saveQueueToLocalStorage();
+                updateCurrentCustomer();
+            }
+        });
+
+        // Print current queue details
+        document.getElementById('printBtn').addEventListener('click', () => {
+            if (queue.length > 0) {
+                document.getElementById('printQueueNumber').innerHTML = `<p>رقم الدور: ${queue[0].number}</p>`;
+                document.getElementById('printCustomerName').innerHTML = `<p>الاسم: ${queue[0].name}</p>`;
+                document.getElementById('printSpecialistName').innerHTML = `<p>الاخصائية: ${queue[0].specialist}</p>`;
+                document.getElementById('printServiceType').innerHTML = `<p>الخدمة: ${queue[0].type}</p>`;
+
+                printCurrentQueue();
+            } else {
+                alert('لا يوجد عملاء للطباعة.');
+            }
+        });
+
+
+        // Handle service option selection
+        document.querySelectorAll('.service-option i').forEach(icon => {
+            icon.addEventListener('click', () => {
+                document.querySelectorAll('.service-option').forEach(option => option.classList.remove('selected'));
+                icon.parentElement.classList.add('selected');
+
+                const value = icon.getAttribute('data-value');
+                document.querySelector(`input[name="serviceType"][value="${value}"]`).checked = true;
+            });
+        });
+
+        // Initialize the specialist dropdown on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            updateSpecialistDropdown();
+            updateCurrentCustomer(); // Update current customer display on load
+        });
+
+        // Update queue display every second
+        function updateQueueDisplay() {
+            const queue = JSON.parse(localStorage.getItem('queue')) || [];
+            const currentQueueElement = document.getElementById('currentQueue');
+            const nextQueueElement = document.getElementById('nextQueue');
+
+            if (queue.length > 0) {
+                const currentCustomer = queue[0];
+                currentQueueElement.innerHTML = `العميل رقم: ${currentCustomer.number} <br> الاسم: ${currentCustomer.name} <br> الخدمة: ${currentCustomer.type} <br> الاخصائية: ${currentCustomer.specialist}`;
+                nextQueueElement.innerHTML = queue.length > 1
+                    ? `العميل التالي رقم: ${queue[1].number} <br> الاسم: ${queue[1].name} <br> الخدمة: ${queue[1].type}`
+                    : "التالي: لا يوجد عملاء بالانتظار";
+            } else {
+                currentQueueElement.textContent = "لا يوجد عملاء بالانتظار";
+                nextQueueElement.textContent = "التالي: لا يوجد عملاء بالانتظار";
+            }
+        }
+
+        setInterval(updateQueueDisplay, 1000);
+    </script>
+</body>
+
+</html>
