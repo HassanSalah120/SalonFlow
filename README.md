@@ -96,6 +96,21 @@ Package as a desktop application using Electron:
 ### Additional Configuration
 Modify `package.json` to add custom build scripts or configuration for Electron packaging.
 
+## Screenshots
+
+### Application Icon
+![App Icon](screenshots/App%20icon.png)
+Application icon after building the executable.
+
+### Main Interface and Client Management
+![Main Interface](screenshots/Add-Client.png.png)
+The main dashboard combines queue overview and client management functionalities. It provides a comprehensive view of the current salon queue, displaying active customers, waiting times, and service statuses, while also offering an intuitive interface for adding new clients and managing their service information.
+
+### Queue View Screen
+![Queue View](screenshots/View-queue-screen.png)
+Detailed queue management screen showing a full list of customers, their assigned services, waiting times, and real-time queue progression.
+
+
 ## Tech Stack
 
 - **Core**:
