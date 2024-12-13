@@ -1,6 +1,6 @@
 # SalonFlow - Salon Queue Management System
 
-A web-based queue management system for beauty salons, built with PHP and MySQL. The application can be deployed as a standard web application or packaged as a desktop application using Electron.
+A modern salon queue management system built as an Electron desktop application, featuring real-time queue tracking and dual display functionality. The system uses HTML, JavaScript, and Electron for a responsive desktop experience with queue management and display interfaces.
 
 ## Features
 
@@ -26,30 +26,7 @@ A web-based queue management system for beauty salons, built with PHP and MySQL.
 
 ## Deployment Options
 
-### 1. Web Application (Standard)
-Deploy as a standard web application on your server:
-
-1. Set up requirements:
-   - PHP 7.4 or higher
-   - MySQL 5.7 or higher
-   - Web server (Apache/Nginx)
-
-2. Installation:
-   ```bash
-   # Clone the repository
-   git clone https://github.com/HassanSalah120/salonflow.git
-
-   # Install PHP dependencies
-   composer install
-
-   # Configure database
-   cp config.example.php config.php
-   # Edit config.php with your database credentials
-   ```
-
-3. Configure your web server to point to the application directory
-
-### 2. Desktop Application (Optional)
+### Desktop Application
 Package as a desktop application using Electron:
 
 1. Requirements:
@@ -67,49 +44,87 @@ Package as a desktop application using Electron:
    npm run dist
    ```
 
+## Building Executable (Desktop Application)
+
+### Prerequisites
+- Node.js (version 14 or higher)
+- npm (Node Package Manager)
+- Windows, macOS, or Linux operating system
+
+### Steps to Build Executable
+
+1. **Install Electron Packager**
+   ```bash
+   npm install -g electron-packager
+   ```
+
+2. **Install Project Dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Build Executable for Different Platforms**
+
+   #### For Windows
+   ```bash
+   electron-packager . SalonFlow --platform=win32 --arch=x64 --icon=path/to/icon.ico
+   ```
+
+   #### For macOS
+   ```bash
+   electron-packager . SalonFlow --platform=darwin --arch=x64 --icon=path/to/icon.icns
+   ```
+
+   #### For Linux
+   ```bash
+   electron-packager . SalonFlow --platform=linux --arch=x64
+   ```
+
+   **Note:** Replace `path/to/icon` with the actual path to your application icon.
+
+### Customization Options
+- `--platform`: Specify target platform (win32, darwin, linux)
+- `--arch`: Specify architecture (x64, arm64)
+- `--icon`: Custom application icon
+- `--out`: Specify output directory for the executable
+
+### Troubleshooting
+- Ensure all dependencies are correctly installed
+- Check that Electron Packager is globally installed
+- Verify Node.js and npm are up to date
+
+### Additional Configuration
+Modify `package.json` to add custom build scripts or configuration for Electron packaging.
+
 ## Tech Stack
 
-- **Backend**:
-  - PHP with PDO
-  - MySQL Database
-
-- **Frontend**:
-  - Bootstrap (UI Framework)
-  - KTDatatables & DataTables
-  - SweetAlert & Toastr
-
-- **Desktop Packaging** (Optional):
+- **Core**:
   - Electron.js
+  - Node.js
+  - HTML/CSS/JavaScript
+
+- **Frontend Libraries**:
+  - Bootstrap (UI Framework)
+  - SweetAlert2 for alerts
+  - Toastr for notifications
+  - KTDataTables/DataTables for data display
 
 ## Development
 
-### Setting Up Development Environment
+### Setup Development Environment
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/hassansalah120/salonflow.git
+git clone https://github.com/HassanSalah120/salonflow.git
 ```
 
 2. Install dependencies:
 ```bash
-# PHP dependencies
-composer install
-
-# Node.js dependencies (only if using Electron)
 npm install
 ```
 
-3. Configure database:
-   - Create MySQL database
-   - Copy `config.example.php` to `config.php`
-   - Update database credentials
-
-4. Start development:
+3. Start development:
 ```bash
-# For web development
-php -S localhost:8000
-
-# For desktop development
 npm start
 ```
 
@@ -127,8 +142,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Acknowledgments
 
-- PHP/MySQL for robust backend
-- Bootstrap for responsive design
-- KTDatatables for data management
-- SweetAlert2 and Toastr for notifications
 - Electron.js for desktop packaging capabilities
+- Bootstrap for responsive design
+- SweetAlert2 and Toastr for notifications
+- KTDataTables/DataTables for data management
