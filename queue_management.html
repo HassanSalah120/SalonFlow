@@ -122,33 +122,29 @@
             <div id="currentCustomer" class="text-center">
                 <h2>العميل الحالي</h2>
                 <div id="currentCustomerInfo" class="mb-3"></div>
-                
+
                 <!--- added to solve console errors-->
                 <div id="currentQueue" class="text-center mt-4" hidden></div>
                 <div id="nextQueue" class="text-center mt-2" hidden></div>
-                <!---
-                
                 <div class="container mt-4">
                     <div class="row text-center">
-                        <!-- First Column: Two stacked buttons
-                        <!-- Second Column: Large button -->
-                        <div class="col-md-6">
-                            <button id="displayBtn" class="btn btn-success w-100" style="height: 100px;"
-                                onclick="window.location.href='queue_display.html';">شاشة العرض</button>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="mb-2">
-                                <button id="nextCustomerBtn" class="btn btn-secondary w-100">العميل القادم</button>
-                            </div>
-                            <div>
-                                <button id="printBtn" class="btn btn-primary w-100">طباعة</button>
-                            </div>
-                        </div>
+                <div class="col-md-6">
+                    <button id="displayBtn" class="btn btn-success w-100" style="height: 100px;"
+                        onclick="window.location.href='queue_display.html';">شاشة العرض</button>
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-2">
+                        <button id="nextCustomerBtn" class="btn btn-secondary w-100">العميل القادم</button>
+                    </div>
+                    <div>
+                        <button id="printBtn" class="btn btn-primary w-100">طباعة</button>
                     </div>
                 </div>
-
             </div>
         </div>
+
+    </div>
+    </div>
     </div>
 
     <div id="printSection">
@@ -210,7 +206,8 @@
         function updateCurrentCustomer() {
             const currentCustomerInfo = document.getElementById('currentCustomerInfo');
             if (queue.length > 0) {
-                currentCustomerInfo.innerHTML = `رقم الدور: ${queue[0].number} <br> الاسم: ${queue[0].name} <br> الخدمة: ${queue[0].type} <br> الاخصائية: ${queue[0].specialist}`;
+                currentCustomerInfo.innerHTML =
+                    `رقم الدور: ${queue[0].number} <br> الاسم: ${queue[0].name} <br> الخدمة: ${queue[0].type} <br> الاخصائية: ${queue[0].specialist}`;
             } else {
                 currentCustomerInfo.textContent = 'لا يوجد عملاء في الانتظار';
             }
@@ -248,7 +245,8 @@
 
                 // Clear selected service
                 document.querySelectorAll('input[name="serviceType"]').forEach(rb => rb.checked = false);
-                document.querySelectorAll('.service-option').forEach(option => option.classList.remove('selected'));
+                document.querySelectorAll('.service-option').forEach(option => option.classList.remove(
+                    'selected'));
             } else {
                 alert('يرجى إدخال اسم واختيار خدمة.');
             }
@@ -268,7 +266,8 @@
             if (queue.length > 0) {
                 document.getElementById('printQueueNumber').innerHTML = `<p>رقم الدور: ${queue[0].number}</p>`;
                 document.getElementById('printCustomerName').innerHTML = `<p>الاسم: ${queue[0].name}</p>`;
-                document.getElementById('printSpecialistName').innerHTML = `<p>الاخصائية: ${queue[0].specialist}</p>`;
+                document.getElementById('printSpecialistName').innerHTML =
+                    `<p>الاخصائية: ${queue[0].specialist}</p>`;
                 document.getElementById('printServiceType').innerHTML = `<p>الخدمة: ${queue[0].type}</p>`;
 
                 printCurrentQueue();
@@ -281,7 +280,8 @@
         // Handle service option selection
         document.querySelectorAll('.service-option i').forEach(icon => {
             icon.addEventListener('click', () => {
-                document.querySelectorAll('.service-option').forEach(option => option.classList.remove('selected'));
+                document.querySelectorAll('.service-option').forEach(option => option.classList.remove(
+                    'selected'));
                 icon.parentElement.classList.add('selected');
 
                 const value = icon.getAttribute('data-value');
@@ -303,10 +303,11 @@
 
             if (queue.length > 0) {
                 const currentCustomer = queue[0];
-                currentQueueElement.innerHTML = `العميل رقم: ${currentCustomer.number} <br> الاسم: ${currentCustomer.name} <br> الخدمة: ${currentCustomer.type} <br> الاخصائية: ${currentCustomer.specialist}`;
-                nextQueueElement.innerHTML = queue.length > 1
-                    ? `العميل التالي رقم: ${queue[1].number} <br> الاسم: ${queue[1].name} <br> الخدمة: ${queue[1].type}`
-                    : "التالي: لا يوجد عملاء بالانتظار";
+                currentQueueElement.innerHTML =
+                    `العميل رقم: ${currentCustomer.number} <br> الاسم: ${currentCustomer.name} <br> الخدمة: ${currentCustomer.type} <br> الاخصائية: ${currentCustomer.specialist}`;
+                nextQueueElement.innerHTML = queue.length > 1 ?
+                    `العميل التالي رقم: ${queue[1].number} <br> الاسم: ${queue[1].name} <br> الخدمة: ${queue[1].type}` :
+                    "التالي: لا يوجد عملاء بالانتظار";
             } else {
                 currentQueueElement.textContent = "لا يوجد عملاء بالانتظار";
                 nextQueueElement.textContent = "التالي: لا يوجد عملاء بالانتظار";
